@@ -15,25 +15,34 @@ public class LoginGeneratorTest {
 
     @Test
     public void testGenerateLoginForNomAndPrenom1() throws Exception {
-        String login = loginGenerator.generateLoginForNomAndPrenom("Paul", "Durand");
-        boolean testLogin = loginService.loginExists(login);
-        assertTrue(testLogin);
+        String login = loginGenerator.generateLoginForNomAndPrenom("Durand", "Paul");
+        assertEquals(login, "PDUR");
 
     }
 
     @Test
     public void testGenerateLoginForNomAndPrenom2() throws Exception {
-        String login = loginGenerator.generateLoginForNomAndPrenom("Jean", "Rolling");
-        boolean testLogin = loginService.loginExists(login);
-        assertTrue(testLogin);
+        String login = loginGenerator.generateLoginForNomAndPrenom("Rolling", "Jean");
+        assertEquals(login, "JROL1");
 
     }
 
     @Test
     public void testGenerateLoginForNomAndPrenom3() throws Exception {
-        String login = loginGenerator.generateLoginForNomAndPrenom("Paul", "Dùrand");
-        boolean testLogin = loginService.loginExists(login);
-        assertTrue(testLogin);
+        String login = loginGenerator.generateLoginForNomAndPrenom("Dùrand", "Paul");
+        assertEquals(login, "PDUR");
+    }
 
+    @Test
+    public void testGenerateLoginForNomAndPrenom4() throws Exception {
+        String login = loginGenerator.generateLoginForNomAndPrenom("Du", "Paul");
+        assertEquals(login, "PDU");
+
+    }
+
+    @Test
+    public void testGenerateLoginForNomAndPrenom5() throws Exception {
+        String login = loginGenerator.generateLoginForNomAndPrenom("Ralling", "John");
+        assertEquals(login, "JRAL2");
     }
 }
